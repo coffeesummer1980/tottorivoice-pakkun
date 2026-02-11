@@ -8,11 +8,11 @@
 // --- アセット設定 ---
 const ASSETS = {
     player: {
-        idle: 'ゆかりんキャラ/普通.png',
-        eat: 'ゆかりんキャラ/食べる.png',
-        happy: 'ゆかりんキャラ/にこ.png',
-        damage: 'ゆかりんキャラ/やっちゃった.png', // 毒を食べた時
-        miss: 'ゆかりんキャラ/くたくた.png' // 落とした時（※今回は不要かも）
+        idle: 'characters/normal.png',
+        eat: 'characters/eating.png',
+        happy: 'characters/happy.png',
+        damage: 'characters/damage.png', // 毒を食べた時
+        miss: 'characters/tired.png' // 落とした時（※今回は不要かも）
     },
     // ファイル名が数字でわかりにくいので、ディレクトリを読み込んで配列にするのが理想だが
     // ここでは静的に定義する（list_dirの結果より）
@@ -23,7 +23,7 @@ const ASSETS = {
         'tottorifood/27188544.png',
         'tottorifood/470916.png'
     ],
-    poison: 'tottorifood/毒キノコ.png'
+    poison: 'tottorifood/mushroom_poison.png'
 };
 
 // --- ゲーム定数 ---
