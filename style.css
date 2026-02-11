@@ -1,0 +1,197 @@
+:root {
+    --primary-color: #FF8C00;
+    --accent-color: #FFD700;
+    --bg-color: #E0F7FA;
+    --text-color: #333;
+    --font-main: 'M PLUS Rounded 1c', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+    background-color: #f0f4f8;
+    color: var(--text-color);
+    overflow: hidden;
+    /* スクロール防止 */
+    touch-action: none;
+    /* スマホでのスクロール防止 */
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    /* iOSでの長押しメニュー防止 */
+    -webkit-tap-highlight-color: transparent;
+    /* タップ時のハイライト無効化 */
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Fallback */
+    height: 100dvh;
+    /* Mobile Safariなどでアドレスバーを除いた高さ */
+    max-width: 600px;
+    /* PCでの最大幅 */
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #87CEEB 0%, #E0F7FA 100%);
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+#game-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* UI Layer */
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* ゲーム操作を阻害しないように */
+}
+
+/* Score Display */
+#score-display {
+    position: absolute;
+    top: 60px;
+    /* ステータスバーの下 */
+    left: 20px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* Screens */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    /* ボタン操作などを有効化 */
+    transition: opacity 0.3s;
+    z-index: 100;
+}
+
+.screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.title {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0 #fff;
+}
+
+.description {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.tutorial-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: wave 1.5s infinite;
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-20deg);
+    }
+
+    75% {
+        transform: rotate(20deg);
+    }
+}
+
+/* Buttons */
+button {
+    font-family: var(--font-main);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 60px;
+    border-radius: 50px;
+    box-shadow: 0 4px 0 #E65100;
+}
+
+.btn-secondary {
+    background: #4CAF50;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 50px;
+    box-shadow: 0 4px 0 #2E7D32;
+    margin: 10px;
+}
+
+.result-score {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin: 10px 0 20px;
+}
+
+#result-message {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* ステータスバー用調整 */
+#game-status-bar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    pointer-events: none;
+    /* Allow clicks through to game */
+}
+
+#game-status-bar>* {
+    pointer-events: auto;
+    /* SDK UI elements should be clickable */
+}

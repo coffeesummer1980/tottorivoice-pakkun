@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ゆかりんぱっくん！</title>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ステータスバー (SDKによって描画されます) -->
+    <div id="game-status-bar"></div>
+
+    <div id="game-container">
+        <!-- ゲーム画面 -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- UIレイヤー -->
+        <div id="ui-layer">
+            <div id="score-display">SCORE: <span id="score-val">0</span></div>
+
+            <!-- スタート画面 -->
+            <div id="start-screen" class="screen">
+                <h1 class="title">ゆかりん<br>ぱっくん！</h1>
+                <div class="description-box"
+                    style="background: rgba(255,255,255,0.7); padding: 10px; border-radius: 10px; margin-bottom: 20px; font-size: 0.9rem;">
+                    <strong>【あそびかた】</strong><br>
+                    🍱 上から落ちてくる鳥取の美味しいものを食べよう<br>
+                    👆 画面タップかマウス移動でゆかりんが左右に動くよ<br>
+                    🍄 毒キノコだけは食べちゃダメ！（即終了）
+                </div>
+                <button id="start-btn" class="btn-primary">スタート</button>
+            </div>
+
+            <!-- ゲームオーバー画面 -->
+            <div id="game-over-screen" class="screen hidden">
+                <h2>GAME OVER</h2>
+                <div class="result-score">SCORE: <span id="final-score">0</span></div>
+                <div id="result-message"></div>
+                <div class="btn-group">
+                    <button id="retry-btn" class="btn-secondary">もう一度</button>
+                    <button id="home-btn" class="btn-secondary" onclick="location.href='../index.html'">ホームへ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- モーダル用コンテナ -->
+    <div id="modal-container"></div>
+
+    <script src="./game-park-sdk.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
